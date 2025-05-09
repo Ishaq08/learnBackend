@@ -8,14 +8,14 @@ app.get('/', (req, res) => {
 
 app.get('/twitter', (req, res) => {
     res.send("twitter")
-})
+}) 
 
 app.get('/login', (req, res) => {
     res.send('<h1>login at xyz</h1>')
 })
 
 app.get('/youtube', (req, res) => {
-    res.send("Backend Video")
+    res.send("Backend Vide")
 })
 
 app.listen(port, () => {
