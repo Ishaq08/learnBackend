@@ -15,6 +15,8 @@
     "url": "https://github.com/Ishaq08/learnBackend/issues"
   },
   "homepage": "https://github.com/Ishaq08/learnBackend#readme",
-  "description": "" 
-  
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }

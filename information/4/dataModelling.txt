@@ -1,0 +1,10 @@
+mongoose :- helper
+prisma     :- helper
+
+Moon Modeler:- used for data modelling
+
+eraser.io :- for free data modeling
+
+codesendBOX:- use for online coding
+github code spaces
+stackblitz :- data modeling in stackblitz
