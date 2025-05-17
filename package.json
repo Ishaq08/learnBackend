@@ -2,9 +2,9 @@
   "name": "learnbackend",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node index.js"
-  },
+"dev": "nodemon src/index.js" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ishaq08/learnBackend.git"
@@ -15,9 +15,6 @@
     "url": "https://github.com/Ishaq08/learnBackend/issues"
   },
   "homepage": "https://github.com/Ishaq08/learnBackend#readme",
-  "description": "",
-  "devDependencies": {
-    "nodemon": "^3.1.10",
-    "prettier": "^3.5.3"
-  }
+  "description": "" 
+  
 }

@@ -1,0 +1,13 @@
+mkdir public :- mkdir temp > .gitkeep
+mkdir src:- 
+          mkdir controllers db middlewares models routes uitls
+          touch app.js constants.js index.js
+
+.env
+.gitignore
+.prettierrc
+.prettierignore
+
+package.son:- 
+            npm i -D nodemon
+            npm i -D prettier
