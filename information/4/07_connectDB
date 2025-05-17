@@ -1,0 +1,25 @@
+mongoDb atlas :- sigin > new project > project name > user name > password > 
+                network access ip > 0.0.0.0/0 , dataBase access > name , password , allow all resources 
+                click to database > cluster > connect > compass > copy link > give your password and remove ending slah
+
+.env add port and mongo URL
+constant = export const DB_NAME = "learn BAckend"
+ 
+
+ notes: for database use try catch or promisses
+        database is always an other containt (aysn await)
+
+connect DataBase 2 approchs :
+
+1:- all code in index file
+2 :- code in DB folder export the code , and import it in index.js
+
+dotenv :- use for all the process is avaible qickly in other 
+//require('dotenv').config({path: './env'})
+
+import dotenv from 'dotenv'
+dotenv.config({
+    path: './env'
+})
+packeage.json :-     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+this is used as experimental 
