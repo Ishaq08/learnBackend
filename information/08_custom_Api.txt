@@ -1,0 +1,2 @@
+URL data is coming for req.params
+req.body > from , json data
