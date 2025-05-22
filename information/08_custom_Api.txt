@@ -1,2 +1,28 @@
+express
 URL data is coming for req.params
 req.body > from , json data
+
+app.use():- used for middlware , Or configration
+multer : is for file uploding
+
+
+we can talk to data base , and many time ..........we can write this below code for many time
+const connectDB = async () => {
+    try {
+        const connectionInstance = await mongoose.connect(`${process.env.MONGO_URL}/${DB_NAME}`);
+        console.log(`\n mongoDb is connected !! DB HOST: ${connectionInstance.connection.host}`);
+
+    } catch (error) {
+        console.log("mongo DB connection Error", error);
+        process.exit(1);
+    }
+};
+
+why we can write it many time 
+
+why not we can create a utility file for this raper code
+
+higher order function:- is a function which accept a fuction as a prameter or return it.
+higher order function treat as varibales
+
+node js api error:-  handle api error to stander way
