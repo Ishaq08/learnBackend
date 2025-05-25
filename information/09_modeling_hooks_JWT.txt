@@ -1,0 +1,21 @@
+make user model, and video model
+for watchhistory : npm install mongoose-aggregate-paginate-v2
+
+npm i bcrypt : help to hush your passoward
+$ npm i jsonwebtoken
+
+for encryption : mongoose > middleware > hooks, pre
+pre hook: is a middleware , when data is saved just before run pre hook. like passoward encryption
+
+userSchema.pre("save", async function () {
+        
+    }) write pre hook like this , b/c arrow function has No this keyword
+
+
+userSchema.pre("save", async function () {
+        this.password = bcrypt.hash(this.password, 10)
+        next()   this code can change passoward every time
+    })
+
+
+jwt is bararr token :- means which one have this token ,it can access it
