@@ -1,0 +1,17 @@
+file upload are handle by backend 
+NOw a days file are not uploaded in to your own server, file are upload in 3rd party app , or aws
+
+upload is batter to make seprat utility function , some time in middleware . (code reuse)
+
+cloudinary:- 
+
+upload need two packeages
+1 .express file upload
+2. multer, now a day multer is used
+
+2 step settings :- we get file through multer and store tempary in local storage  , then  use cloudinary to store in server
+Q: why the above 2 step , is it possible that we directly store in server
+Ans : yes possible , but in the production grade settings , the tempary file is store in own server , because of re attpend
+
+utils: cloudinary.js
+middleware : multer.js
