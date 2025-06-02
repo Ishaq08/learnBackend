@@ -1,0 +1,74 @@
+HTTP (Hyper text transfer protocol)
+
+Differnt b/w HTTP And HTTPS ?
+    only protocol Differnce , 
+    technolog , communication , and rules are same in both HTTP and HTTPS
+    HTTP :- Data are going in clear text
+    HTTPS :- Data encryption
+
+    URL :- uniform resourse locater
+    URI :- uniform resourse identifier
+    URN :- uniform resourse Name
+
+What are HTTP headers?
+ * metadata ---> key,  value  like-->  Name : ishaq
+                    Name is key , ishaq  is value
+                    sent along with request of response
+ * caching , authenticaton , manage state (user status, like gust user , login user)
+   x-perfix ---> 2012 (x - deprecated) not use
+   
+    Ruquest headers :- from client
+    Response headers  :- from server 
+    Representation headers :- encoding / compression
+    Payload headers :-  data
+
+Most common headers:- 
+    Accept: application/json
+    User-Agent :- the request is cominh from which appliaction (postman, broswer, engine etc)
+    authorization :- Bearr ____JWT token
+    content-Type :- images , pdf etc
+    cookies :- { unique code , how many time the user is login , etc}
+    Cache-Control :-  when the data is expired 
+
+CORS:-
+    access-Control-allow-origin
+    access-Control-allow-Credentials
+    access-Control-allow-method
+
+Security:- 
+    cross-origin-embeder-policy
+    cross-origin-opener-policy
+    content-Security-policy
+    X-XSS-Protection
+
+HTTP Methods:- 
+ Basic set of operations that can be used to interact with server
+    GET : retrieve a resource
+    HEAD: No massge body (response headers only)
+    OPTIONS: what operations are aviable
+    TRACE: loopback test (get some data)
+    DELETE: remove a resource
+    PUT: replace a resource
+    PATCH: change part of resource
+    POST: interact with resource (mostly add)
+
+HTTP status code:-
+    1xx   informational   1xx is Basicly 101 , 110 .104
+    2xx   Succes
+    3xx   Redirection
+    4xx   Client error
+    5xx   Sever error
+
+ 100    Contnue
+ 102    processing
+ 200    ok
+ 201    created
+ 202    Accepted
+ 307    tenparory Redirect
+ 308    permanent Redirect
+ 400    Bed request
+ 401    Unauthorized
+ 402    payment required
+ 404    not found 
+ 500    internal server error
+ 504    Gateway time out
