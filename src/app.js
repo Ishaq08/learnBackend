@@ -23,4 +23,15 @@ app.use(express.urlencoded({
 app.use(express.static("public")) //file , images are stord . its a public asets
 app.use(cookieParser())
 
+// routes
+
+import userRouter from "./routes/user.routes.js"
+
+
+// routes declearation
+app.use("/api/v1/users", userRouter)
+
+// http://localhost:8000/api/v1/users/register
+
+
 export {app}

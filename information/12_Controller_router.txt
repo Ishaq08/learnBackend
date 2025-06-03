@@ -1,0 +1,14 @@
+Controller > user.Controller.js
+routes > user.router.js
+app > routes
+
+In app if we declared routes first we use middleware becaues the routers in different place
+
+    in app.js
+    app.use("/user", userRouter)
+
+    in user.router.js
+        router.route("/register").post(regsiterUser)
+ 
+ the URL is made like this
+  http://localhost:8000/api/v1/users/register
