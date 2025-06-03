@@ -1,0 +1,14 @@
+ // get user details from frontend (postman)--> user.model.js
+    // validation - not empty
+    // check is user already exists: username , email
+    // check fro images , check for avatar
+    // upload them to cloudinary , avatar
+    // create user object - create entry in db
+    // remove password and refresh token field from reponse
+    // check for user creation
+    // return response
+
+user details ., req.body ---> form or json
+
+for file handling use middleware --> multer.middleware.js 
+    import upload in user.routes.js
