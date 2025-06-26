@@ -1,0 +1,18 @@
+in the companies the postman collection are used
+
+postman collection : the backend engineer can share with frontend
+
+in postman select form data b/c In the json you cant send file
+
+in postman create folder , file name
+and past the url
+
+copy the common elements in url  , like http://localhost:8000/api/v1
+
+create enveriment nmae it 
+set varibale name , initial value ,current value 
+save it
+
+go to collection , im top corner select the enveriment file 
+then in url remove common url 
+and enter {{enveriment name}}/user/register

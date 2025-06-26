@@ -1,4 +1,4 @@
- // get user details from frontend (postman)--> user.model.js
+ // get user details from frontend (postman)-->      user.model.js
     // validation - not empty
     // check is user already exists: username , email
     // check fro images , check for avatar

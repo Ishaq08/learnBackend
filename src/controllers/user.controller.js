@@ -1,7 +1,7 @@
 import { ApiError } from "../utils/apiError.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import {User} from "../models/user.model.js"
-import {upupLoadOnCloudinary} from "../utils/cloudinary.js"
+import {upLoadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 const regsiterUser = asyncHandler(async (req, res) => {
@@ -15,9 +15,11 @@ const regsiterUser = asyncHandler(async (req, res) => {
     // check for user creation
     // return response
 
+    console.log("req.files:", req.files); // Added logging for debugging
+
     //get user details
     const { fullname, email, username, password } = req.body
-    console.log("email", email);
+    //console.log("email", email);
 
     // validations 
     if (
@@ -28,23 +30,30 @@ const regsiterUser = asyncHandler(async (req, res) => {
     }
 
     // check is user already exists: username , email
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{ username }, { email }]
     })
     if (existedUser) {
         throw new ApiError(409, "user with email or username is already exists ")
     }
+    console.log(req.files);
 
     // check fro images , check for avatar
     const avatarLocalPath = req.files?.avatar[0]?.path   // multer is file
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    //const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    let coverImageLocalPath;
+    if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.lenght > 0) {
+        coverImageLocalPath = req.files.coverImage[0].path
+        
+    }
+
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is required")
     }
 
     // check fro cloudinary images , check for avatar
-    const avatar = await upupLoadOnCloudinary(avatarLocalPath)
-    const coverImage = await upupLoadOnCloudinary(coverImageLocalPath)
+    const avatar = await upLoadOnCloudinary(avatarLocalPath)
+    const coverImage = coverImageLocalPath ? await upLoadOnCloudinary(coverImageLocalPath) : null;
     
     // upload them to  , avatar
     if (!avatar) {
@@ -61,11 +70,11 @@ const regsiterUser = asyncHandler(async (req, res) => {
         username: username.toLowerCase()
     })
     
-    const createdUser = await user.findbyId(user._id).select(
+    const createdUser = await User.findById(user._id).select(
        "-password -refreshToken"
     )
     
-    if (createdUser) {
+    if (!createdUser) {
         throw new ApiError(500, "Some thing went wrong while register user")
     }
     return res.status(201).json(
