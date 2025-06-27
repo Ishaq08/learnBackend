@@ -1,0 +1,17 @@
+
+Differnt :
+access token: short time to expire
+refresh token: long time to expire 
+
+valided(authorization) to access token
+refresh token: no need to password every time
+
+when the user has the refresh token , the refresh token give to another access token
+
+user.controller.js
+
+foe logout create middleware
+auth.middleware.js  
+
+user.route.js
+create login and logout route
