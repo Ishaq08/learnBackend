@@ -1,0 +1,12 @@
+refresh token and access , is for that user can't enter email password every time
+
+access token : short lived
+
+refresh token or session stroged : store in DB 
+    if user access token can expire , the 401 error is occur
+    the frontend cant give 401 to user that enter email and password
+    he can write some code for that if 401 occur , heat endpoint that it will give u access token , refresh the access token
+here the you can send refresh token , it can compare it with DB , if it is same , generate access token and send it in cookies
+
+user.controller.js
+create refreshAccessToken
