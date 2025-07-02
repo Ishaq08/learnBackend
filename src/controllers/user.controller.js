@@ -160,8 +160,8 @@ const loginUser = asyncHandler(async (req, res) => {
 const logoutUser = asyncHandler(async (req, res) => {
    await User.findByIdAndUpdate(
         req.user._id, {
-            $set: {
-                refreshToken: undefined
+            $unset: {
+                refreshToken: 1 // this remove the filed from documnets because we use unset
             }
    },
     {
@@ -185,7 +185,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
    const inComingRefreshToken =  req.cookies.refreshToken || req.body.refreshToken
 
    if (!inComingRefreshToken) {
-    throw new ApiError(401, "unauthrozied request")
+    throw new ApiError(401, "unauthorized request")
     }
 
   try {
@@ -193,13 +193,13 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
           inComingRefreshToken,
           process.env.REFRESH_TOKEN_SECRET
       )
-      const user = User.findById(decodedToken?._id)
+      const user = await User.findById(decodedToken?._id)
   
       if (!user) {
           throw new ApiError(401, "invalid refresh token")
       }
       if (inComingRefreshToken !== user?.refreshToken) {
-          throw new ApiError (401, "Refresh token is expried or used")
+          throw new ApiError (401, "Refresh token is expired or used")
           
       }
   
@@ -213,12 +213,12 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
   return res 
       .status(200)
   .cookie("accessToken", accessToken, options)
-  .cookie("refreshToken", refreshToken, options)
+  .cookie("refreshToken", newRefreshToken, options)
       .json(
           new ApiResponse(
               200,
-              { accessToken, newRrefreshToken },
-              "Access token refrehed"
+              { accessToken, newRefreshToken },
+              "Access token refreshed"
       )
   )
   } catch (error) {
@@ -341,11 +341,12 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
         throw new ApiError(400, "cover Image is missing")
     }
 
-    const coverImage = await upLoadOnCloudinary(coverImage)
+    const coverImage = await upLoadOnCloudinary(coverImageLocalPath)
     
     if (!coverImage.url) {
         throw new ApiError(400," Error while Uploading cover image")
     }
+
 
     const user = await User.findByIdAndUpdate(
         req.user?._id,
@@ -429,7 +430,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
         }
     ])
 
-    if (!channel?.length()) {
+    if (!channel?.length) {
 throw new ApiError(400, "channel does not exists")
     }
     return res
